@@ -7,7 +7,8 @@
     "start": "npm run build && node dist/index.js",
     "test": "npx mocha -r ts-node/register tests/**/*.test.ts",
     "build": "npx rimraf dist && npx tsc -p .",
-    "coverage": "npx nyc -r lcov -e .ts -x \"*.test.ts\" npm run test"
+    "coverage": "npx nyc -r lcov -e .ts -x \"*.test.ts\" npm run test",
+    "prepack": "npm run build"
   },
   "keywords": [],
   "author": "",
