@@ -65,7 +65,7 @@ export interface IFormatter {
 export class SimpleFormatter implements IFormatter {
     format(li: ILogItem) {
         const cat = li.category ? `[${li.category}] ` : '';
-        return this.dateFormatter(new Date())  + `[${LevelEnum[li.level]}]`.padEnd(6) + cat + li.text;
+        return this.dateFormatter(new Date())  + ` [${LevelEnum[li.level]}]`.padEnd(7) + cat + li.text;
     }
     private dateFormatter(d:Date){
         return `${d.getFullYear()}-${d.getMonth().toString().padStart(2,'0')}-${d.getDay().toString().padStart(2,'0')} ${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}:${d.getSeconds().toString().padStart(2,'0')}`
@@ -104,7 +104,7 @@ export class BobLogger {
     private level:LevelEnum;
     constructor(opts:IBobLoggerOptions) {
         this.category = opts.category;
-        this.level = opts.level||LevelEnum.LOG
+        this.level = opts.level||LevelEnum.DBG
     }
     write(s: string, l: LevelEnum,...args: any[]) {
         if(l<this.level){
