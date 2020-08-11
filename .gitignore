@@ -6,4 +6,3 @@ uploads
 .well-known
 tmp
 *.log
-dist
