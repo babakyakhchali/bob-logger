@@ -2,10 +2,7 @@
   "name": "bob-logger",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
-  "config": {
-    "unsafe-perm":true
-  },
+  "main": "dist/index.js",  
   "scripts": {
     "start": "npm run build && node dist/index.js",
     "test": "npx mocha -r ts-node/register tests/**/*.test.ts",
