@@ -19,7 +19,7 @@ export class FileWriter implements IWriter {
     private stream:WriteStream;
     constructor(private filePath:string,formatter?:IFormatter){
         this.formatter = formatter || new SimpleFormatter;
-        this.stream = createWriteStream(filePath);
+        this.stream = createWriteStream(filePath,{flags: 'a'});
     }    
     write(li: ILogItem): void {
         this.stream.write(this.formatter.format(li)+"\n");

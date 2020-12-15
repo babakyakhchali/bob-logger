@@ -36,7 +36,7 @@ class FileWriter {
         this.filePath = filePath;
         this.name = 'FileWriter';
         this.formatter = formatter || new SimpleFormatter;
-        this.stream = fs_1.createWriteStream(filePath);
+        this.stream = fs_1.createWriteStream(filePath, { flags: 'a' });
     }
     write(li) {
         this.stream.write(this.formatter.format(li) + "\n");
