@@ -19,7 +19,7 @@ export class FileWriter implements IWriter {
     private stream:WriteStream;
     constructor(private filePath:string,formatter?:IFormatter){
         this.formatter = formatter || new SimpleFormatter;
-        this.stream = createWriteStream(filePath);
+        this.stream = createWriteStream(filePath,{flags: 'a'});
     }    
     write(li: ILogItem): void {
         this.stream.write(this.formatter.format(li)+"\n");
@@ -68,7 +68,7 @@ export class SimpleFormatter implements IFormatter {
         return this.dateFormatter(new Date())  + ` [${LevelEnum[li.level]}]`.padEnd(7) + cat + li.text;
     }
     private dateFormatter(d:Date){
-        return `${d.getFullYear()}-${d.getMonth().toString().padStart(2,'0')}-${d.getDay().toString().padStart(2,'0')} ${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}:${d.getSeconds().toString().padStart(2,'0')}`
+        return `${d.getFullYear()}-${(d.getMonth()+1).toString().padStart(2,'0')}-${d.getDate().toString().padStart(2,'0')} ${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}:${d.getSeconds().toString().padStart(2,'0')}`
     }
 
 }
